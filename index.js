@@ -23,8 +23,8 @@ startQuiz.addEventListener("click", () => {
 
   let x = setInterval(() => {
     if (counterNum < 0) {
-      coutDown.classList.remove("flex");
-      coutDown.classList.add("hidden");
+      countDown.classList.remove("flex");
+      countDown.classList.add("hidden");
       counterNum = 3;
       count = 0;
       timer = null;
@@ -46,7 +46,7 @@ startQuiz.addEventListener("click", () => {
 // All quiz data fetched from json
 const loadQuiz = async () => {
   const res = await fetch("./data/quiz.json");
-  const data = await res.json;
+  const data = await res.json();
   quizData = data;
   displayQuiz(data);
 };
@@ -64,7 +64,7 @@ const displayQuiz = (data) => {
     <div class="h-8 w-8 bg-green-300 rounded-full flex justify-center items-center text-green-800 mr-3">
       ${i + 1}
     </div>
-    <p class="text-gray-800 text-sm">${quiz.quetion}</p>
+    <p class="text-gray-800 text-sm">${quiz.question}</p>
   </div>
   <div class="grid grid-cols-2 gap-4 mt-5">
     ${displayQuizOptions(quiz.options, i)}
@@ -74,7 +74,7 @@ const displayQuiz = (data) => {
 };
 
 // EventListener for quiz submit button
-document.querySelector("#submit").addEventlistener("click", () => {
+document.querySelector("#submit").addEventListener("click", () => {
   if (answers.length < 6) {
     return;
   }
@@ -108,7 +108,7 @@ document.querySelector("#submit").addEventlistener("click", () => {
   }
 
   // data setting on local storage and getting data from local storage
-  let storage = JSON.parse(localStorage.getItem("result"));
+  let storage = JSON.parse(localStorage.getItem("results"));
   if (storage) {
     localStorage.setItem(
       "results",
@@ -136,6 +136,7 @@ document.querySelector("#submit").addEventlistener("click", () => {
 
   // Right side bar/ answer section
   let x = setTimeout(() => {
+    let storagePrevious = JSON.parse(localStorage.getItem("results"));
     showAnswers(answers);
     displayResult.innerHTML = `<div
     class="h-[220px] w-[220px] mx-auto mt-8 flex flex-col justify-center border-2 rounded-tr-[50%] rounded-bl-[50%]"
@@ -154,7 +155,7 @@ document.querySelector("#submit").addEventlistener("click", () => {
   
   <button onclick="location.reload();" class="bg-green-600 text-white w-full py-2 rounded mt-16">Restart</button>
   ${
-    storage
+    storagePrevious
       ? `<div class="mt-5">
       <h1 class="text-center">Previous Submissions <button class="text-blue-800 text-xs" onclick={localStorage.clear();location.reload()}>Clear History</button></h1>
     <div
@@ -163,7 +164,7 @@ document.querySelector("#submit").addEventlistener("click", () => {
     <div>Grade</div>
     <div>Time</div>
     </div>
-    ${storage
+    ${storagePrevious
       ?.reverse()
       ?.map(
         (item) => `<div

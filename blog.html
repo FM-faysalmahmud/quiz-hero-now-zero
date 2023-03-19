@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Question Answers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            common: ["Rubik", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body>
+  <header class="h-16 flex items-center shadow-sm">
+    <nav class="flex justify-between items-center w-9/12 mx-auto">
+      <div class="text-zinc-800 font-bold uppercase">
+        <h1 class="text-lg">Quiz <span class="text-green-700">HERO</span></h1>
+        <p class="text-[10px] font-normal capitalize -mt-1">
+          Get ready to Quiz and be amazed!
+        </p>
+      </div>
+      <a href="/index.html"><button class="bg-green-600 font-light text-sm px-5 py-1 rounded text-white">
+          Quiz
+        </button></a>
+    </nav>
+  </header>
+  <main style="margin: 50px;">
+    <h1>Q-1: What are the differences between map, filter, forEach?</h1>
+    <p>Ans: (i) map: We use map to loop through an array and it also returns the result on a new array.<br>
+      (ii) forEach: We use for each to loop through in a array and it returns only the results in a new line for each
+      result.<br>
+    </p>
+    <h1 style="margin-top: 20px;">
+      Q-2: What are the differences between local storage, session storage and cookies?
+    </h1>
+    <p>Ans: The difference between them are local storage stores the data in your browser and if you exit the browser
+      and only the browser again then the data still remains in the browser for a certain period of time. But in session
+      storage you can store the data but it only stays on the browser as long as the browser is on. If you exit the
+      browser then the data will also be gone. Cookies are also similar, it also stores data. When you are browsing a
+      website then the site stores some cookie data on your browser.
+    </p>
+    <h1 style="margin-top: 20px;">Q-3: What is eventloop?</h1>
+    <p>Ans: Event loop is used to execule the javascript code. It creates a queue list of all the events and then it
+      runs event serially one by one.
+    </p>
+    <br>
+    <br>
+    <br>
+    <p><b>quizTimer: </b>The function is used to run the timer in the quiz question answer selection and to collect the
+      time spent to answer the quiz questions. And when submit button is clicked the timer is stopped</p>
+
+    <p><b>chooseQuiz: </b>The choose quiz function is used to collect the selected quiz answers and their index and then
+      compare the result with the answers and then show the results</p>
+
+  </main>
+</body>
+
+</html>
